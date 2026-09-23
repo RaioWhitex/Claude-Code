@@ -3,149 +3,421 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gustavo Steferson — Desenvolvedor de Sistemas em formação</title>
-<meta name="description" content="Portfólio de Gustavo Steferson de Souza Rocha: estudante de Análise e Desenvolvimento de Sistemas e Técnico em Eletrotécnica.">
+<title>Gustavo Steferson — Técnico em Eletrotécnica e estudante de ADS</title>
+<meta name="description" content="Portfólio de Gustavo Steferson de Souza Rocha: técnico em Eletrotécnica, estudante de Análise e Desenvolvimento de Sistemas, com experiência em operações, negociação e dados.">
 <meta name="author" content="Gustavo Steferson de Souza Rocha">
-<meta name="theme-color" content="#030303">
+<meta name="theme-color" content="#07090d">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Gustavo Steferson — Desenvolvedor de Sistemas em formação">
-<meta property="og:description" content="Portfólio de Gustavo Steferson de Souza Rocha: estudante de Análise e Desenvolvimento de Sistemas e Técnico em Eletrotécnica.">
+<meta property="og:title" content="Gustavo Steferson — Técnico em Eletrotécnica e estudante de ADS">
+<meta property="og:description" content="Portfólio de Gustavo Steferson de Souza Rocha: técnico em Eletrotécnica, estudante de Análise e Desenvolvimento de Sistemas, com experiência em operações, negociação e dados.">
 <meta property="og:locale" content="pt_BR">
-<meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <script>
   (function () {
     var d = document.documentElement;
     d.classList.add('js');
-    try { if (localStorage.getItem('gs-accent') === 'gold') d.dataset.accent = 'gold'; } catch (e) {}
+    var t = null;
+    try { t = localStorage.getItem('gs-theme'); } catch (e) {}
+    d.dataset.theme = t || 'dark';
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="modulepreload" href="assets/vendor/three/three.module.min.js">
 </head>
 <body>
-<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="backdrop" aria-hidden="true"><span class="blob blob--a"></span><span class="blob blob--b"></span></div>
 
-<div class="loader" role="status" aria-live="polite" aria-label="Carregando página">
-  <div class="loader__terminal">
-    <div class="loader__top"><span>// GUSTAVO.DEV</span><span>BOOT_SEQUENCE.EXE</span></div>
-    <div class="loader__readout"><p class="loader__label">INICIANDO_SISTEMA</p><strong class="loader__pct">00%</strong></div>
-    <div class="loader__track"><span class="loader__bar"></span></div>
-    <p class="loader__log"></p>
-  </div>
-</div>
-<div class="scroll-progress" aria-hidden="true"></div>
-<div class="cursor" aria-hidden="true"></div>
-
-<header class="site-header">
-  <a class="site-logo" href="index.html" aria-label="Página inicial"><span aria-hidden="true">//</span> GUSTAVO.DEV</a>
-  <nav class="nav" id="navegacao" aria-label="Navegação principal">
-    <a href="index.html" aria-current="page" data-scramble>Início</a>
-    <a href="sobre.html" data-scramble>Sobre</a>
-    <a href="habilidades.html" data-scramble>Habilidades</a>
-    <a href="formacao.html" data-scramble>Formação</a>
-    <a href="contato.html" data-scramble>Contato</a>
+<header class="nav" aria-label="Topo">
+  <a class="brand" href="#sobre" aria-label="Gustavo Steferson — início">
+    <span class="brand__mark" aria-hidden="true"><span>GS</span></span>
+    <span>Gustavo <small>Steferson</small></span>
+  </a>
+  <nav class="nav__links" id="menu" aria-label="Seções">
+    <span class="nav__pill" aria-hidden="true"></span>
+    <a href="#sobre">Sobre</a>
+    <a href="#experiencia">Experiência</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#formacao">Formação</a>
+    <a href="#contato">Contato</a>
   </nav>
-  <div class="header-tools">
-    <div class="accent-switch" role="group" aria-label="Cor de destaque">
-      <span>COR</span>
-      <button type="button" data-accent="blue" aria-pressed="true" aria-label="Azul elétrico"><span></span></button>
-      <button type="button" data-accent="gold" aria-pressed="false" aria-label="Ouro"><span></span></button>
-    </div>
-    <button class="menu-trigger" type="button" aria-controls="navegacao" aria-expanded="false">[ MENU ]</button>
-  </div>
+  <span class="spacer"></span>
+  <button class="icon-btn theme-btn" type="button" aria-label="Alternar tema claro/escuro"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
+  <button class="icon-btn menu-btn" type="button" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
 </header>
 
-<main id="conteudo" tabindex="-1">
-<section class="hero container" aria-labelledby="hero-title">
-  <div class="hero__main">
-    <p class="eyebrow reveal"><span>//</span> Portfólio pessoal — v2.0</p>
-    <h1 id="hero-title" class="hero__title display">
-      <span class="reveal-mask glitch" data-text="Gustavo" style="--d:.05s">Gustavo</span>
-      <span class="reveal-mask" style="--d:.15s">Steferson</span>
-      <span class="reveal-mask outline" style="--d:.25s">.dev</span>
-    </h1>
-    <p class="hero__role reveal" style="--d:.35s">
-      <span class="pulse-dot" aria-hidden="true"></span>
-      <span class="typed" data-typed='["Analista e Desenvolvedor de Sistemas em formação","Técnico em Eletrotécnica","Front-end: HTML5 · CSS3 · JavaScript","Perfil analítico e organizado"]'>Analista e Desenvolvedor de Sistemas em formação</span>
-    </p>
-    <p class="hero__intro reveal" style="--d:.45s">
-      Atualmente curso <strong>Análise e Desenvolvimento de Sistemas</strong>, caminhando para o 2º semestre,
-      e me preparo para um semestre de formação no <strong>PROA</strong>, pelo programa Profissão.
-      Também sou técnico em Eletrotécnica, com experiência na criação e análise de plantas baixas residenciais e industriais.
-    </p>
-    <div class="btn-row reveal" style="--d:.55s">
-      <a class="btn" href="contato.html">Falar comigo <span class="arrow" aria-hidden="true">→</span></a>
-      <a class="btn btn--ghost" href="habilidades.html">Ver habilidades <span class="arrow" aria-hidden="true">↗</span></a>
-    </div>
-  </div>
+<main id="conteudo">
 
-  <aside class="hero__side" aria-label="Status do sistema">
-    <div class="window globe-window reveal" style="--d:.3s">
-      <div class="window__bar"><span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>GLOBE.EXE</span><span>SP / BR</span></div>
-      <canvas data-scene="globe" aria-hidden="true"></canvas>
-      <span class="globe-window__tag">LAT -23.55 · LON -46.63</span>
-    </div>
-    <div class="window sysinfo reveal" style="--d:.4s">
-      <div class="window__bar"><span>SYSTEM</span><span data-clock>--:--:--</span></div>
-      <dl>
-        <dt>Status</dt><dd><span class="status"><span class="pulse-dot pulse-dot--round" aria-hidden="true"></span>Online</span></dd>
-        <dt>Tipo</dt><dd>Portfólio pessoal</dd>
-        <dt>Stack</dt><dd>HTML · CSS · JS</dd>
-        <dt>Curso</dt><dd>ADS — 2º semestre</dd>
-        <dt>Local</dt><dd>São Paulo, BR</dd>
-      </dl>
-    </div>
-  </aside>
-  <span class="scroll-hint" aria-hidden="true">Role</span>
-</section>
+<!-- ============ SOBRE MIM (hero com avatar 3D) ============ -->
+<section id="sobre" class="hero" aria-labelledby="sobre-titulo">
+  <div class="wrap">
+    <article class="hero-card card">
+      <div class="hero-card__text">
+        <p class="label reveal">Sobre mim</p>
+        <h1 id="sobre-titulo" class="reveal" style="--d:.05s">Gustavo Steferson <span>de Souza Rocha</span></h1>
+        <div class="hero-role reveal" style="--d:.1s">
+          <span class="chip"><span class="dot" aria-hidden="true"></span>Aberto a estágio, trainee e nível inicial</span>
+          <span class="chip"><b>Técnico</b> em Eletrotécnica — formado</span>
+          <span class="chip">Estudante de <b>ADS</b></span>
+        </div>
+        <p class="reveal" style="--d:.15s">
+          Estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, com formação técnica em
+          <strong>Eletrotécnica</strong> e experiência em operações, negociação e organização de dados.
+          Tenho perfil analítico, organizado e facilidade para aprender — e busco minha primeira
+          oportunidade na área de <strong>Desenvolvimento Web</strong>.
+        </p>
+        <dl class="facts reveal" style="--d:.2s">
+          <div class="fact"><dt>Local</dt><dd>Jaraguá, São Paulo — SP</dd></div>
+          <div class="fact"><dt>Atualmente</dt><dd>Supervisor de Transporte · Seara</dd></div>
+          <div class="fact"><dt>Cursando</dt><dd>ADS · Faculdade Flamingo</dd></div>
+          <div class="fact"><dt>Formado</dt><dd>Eletrotécnica · ETEC Jaraguá</dd></div>
+        </dl>
+        <div class="hero-actions reveal" style="--d:.25s">
+          <a class="btn" href="#contato">Vamos conversar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost" href="#experiencia">Ver trajetória</a>
+          <div class="socials">
+            <a class="icon-btn" href="https://www.linkedin.com/in/gustavo-steferson-1896263a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm7 0h3.8v1.5h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.5 4.77 5.75v5.7h-4v-5.05c0-1.2-.02-2.75-1.7-2.75-1.7 0-1.95 1.3-1.95 2.66v5.14H10v-11Z"/></svg></a>
+            <a class="icon-btn" href="https://github.com/RaioWhitex" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></a>
+          </div>
+        </div>
+      </div>
 
-<div class="marquee " aria-hidden="true"><div class="marquee__track"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Python</span><span>Power BI</span><span>Excel</span><span>AutoCAD</span><span>GitHub</span><span>VS Code</span><span>Modelagem de Dados</span></div></div>
+      <div class="stage" data-model="">
+        <div class="stage__hud" aria-hidden="true">
+          <span class="chip">AVATAR 3D · 360°</span>
+          <span class="chip">PLATAFORMA ELEVATÓRIA</span>
+        </div>
+        <div class="stage__loading" aria-hidden="true"><span>Montando avatar…</span></div>
+        <div class="stage__fallback"><img src="assets/img/avatar/face.webp" alt="Rosto de Gustavo Steferson"></div>
+        <div class="stage__foot">
+          <span class="stage__hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></svg>Arraste para girar</span>
+          <button class="icon-btn stage__toggle" type="button" aria-label="Pausar animação" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+        </div>
+        <p class="sr-only">Avatar 3D de Gustavo, com camisa preta e branca estampada com tentáculos, calça jeans preta e tênis brancos, girando sobre uma plataforma elevatória.</p>
+      </div>
+    </article>
 
-<section class="section container" aria-labelledby="index-title">
-  <div class="section-head reveal">
-    <div>
-      <p class="eyebrow"><span>//</span> Índice</p>
-      <h2 id="index-title" class="display">Explore o sistema</h2>
+    <div class="ticker">
+      <div class="card glow reveal"><strong>2</strong><span>experiências profissionais</span></div>
+      <div class="card glow reveal" style="--d:.05s"><strong>2025</strong><span>técnico em Eletrotécnica formado</span></div>
+      <div class="card glow reveal" style="--d:.1s"><strong>2026–28</strong><span>Análise e Desenv. de Sistemas</span></div>
+      <div class="card glow reveal" style="--d:.15s"><strong>23</strong><span>tecnologias e ferramentas</span></div>
     </div>
-    <span class="section-head__index" aria-hidden="true">01</span>
-  </div>
-  <nav class="index-list" aria-label="Páginas do portfólio">
-    <a class="reveal" href="sobre.html"><span class="index-list__num">01 /</span><span class="index-list__title">Sobre</span><span class="index-list__desc">Quem sou, como trabalho e o que me move.</span><span class="index-list__arrow" aria-hidden="true">→</span></a>
-    <a class="reveal" href="habilidades.html"><span class="index-list__num">02 /</span><span class="index-list__title">Habilidades</span><span class="index-list__desc">Stack, ferramentas e nível de proficiência.</span><span class="index-list__arrow" aria-hidden="true">→</span></a>
-    <a class="reveal" href="formacao.html"><span class="index-list__num">03 /</span><span class="index-list__title">Formação</span><span class="index-list__desc">Trajetória acadêmica e cursos concluídos.</span><span class="index-list__arrow" aria-hidden="true">→</span></a>
-    <a class="reveal" href="contato.html"><span class="index-list__num">04 /</span><span class="index-list__title">Contato</span><span class="index-list__desc">WhatsApp, LinkedIn, GitHub, Instagram e e-mail.</span><span class="index-list__arrow" aria-hidden="true">→</span></a>
-  </nav>
-</section>
-
-<section class="section container" aria-labelledby="stats-title">
-  <h2 id="stats-title" class="sr-only">Números</h2>
-  <div class="stats reveal" data-observe>
-    <div class="stat"><div class="stat__value"><span data-count="2" data-pad="2">02</span></div><p class="stat__label">Formações principais</p></div>
-    <div class="stat"><div class="stat__value"><span data-count="9" data-pad="2">09</span></div><p class="stat__label">Tecnologias mapeadas</p></div>
-    <div class="stat"><div class="stat__value"><span data-count="6" data-pad="2">06</span></div><p class="stat__label">Ferramentas no dia a dia</p></div>
-    <div class="stat"><div class="stat__value"><span data-count="100">100</span><sup>%</sup></div><p class="stat__label">Vontade de aprender</p></div>
   </div>
 </section>
 
-<section class="section container" aria-labelledby="cta-title">
-  <div class="cta reveal">
-    <p class="eyebrow"><span>//</span> Próximo passo</p>
-    <h2 id="cta-title" class="cta__title display">Vamos <span>conversar?</span></h2>
-    <p class="hero__intro">Aberto a oportunidades em áreas analíticas e técnicas — planejamento, desenvolvimento, análise e suporte a processos internos.</p>
-    <div class="btn-row"><a class="btn" href="contato.html">Iniciar contato <span class="arrow" aria-hidden="true">→</span></a></div>
+<!-- ============ EXPERIÊNCIA ============ -->
+<section id="experiencia" aria-labelledby="exp-titulo">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="label reveal">Experiência</p><h2 id="exp-titulo" class="reveal">Onde já <em>atuei</em></h2></div>
+      <p class="reveal">Operações, gestão de pessoas e documentos, negociação e cuidado com dados sensíveis.</p>
+    </div>
+    <ol class="jobs">
+      <li class="job card glow reveal">
+        <div class="job__when"><span class="job__period">07/2026 — atual</span><span class="chip chip--done job__status">Atual</span></div>
+        <div>
+          <h3>Supervisor de Transporte</h3>
+          <p class="job__org">Seara <span>· Home Office</span></p>
+          <ul class="ticks">
+            <li>Supervisão da operação de transporte e da frota de caminhões.</li>
+            <li>Acompanhamento de motoristas e tratativa de ocorrências em rota.</li>
+            <li>Responsabilidade pela gestão de documentos financeiros.</li>
+          </ul>
+          <div class="tags"><span class="tag">Logística</span><span class="tag">Gestão de ocorrências</span><span class="tag">Documentação</span></div>
+        </div>
+      </li>
+      <li class="job card glow reveal">
+        <div class="job__when"><span class="job__period">06/2026 — 07/2026</span><span class="chip job__status">CLT · Presencial</span></div>
+        <div>
+          <h3>Recuperador de Crédito</h3>
+          <p class="job__org">Localcred <span>· CLT · Presencial</span></p>
+          <ul class="ticks">
+            <li>Negociação e recuperação de créditos em atraso e gestão de acordos.</li>
+            <li>Atualização de carteiras, organização de dados e atendimento ao cliente.</li>
+            <li>Responsabilidade com dados sensíveis, como CPFs, endereços e informações bancárias.</li>
+          </ul>
+          <div class="tags"><span class="tag">Negociação</span><span class="tag">Atendimento</span><span class="tag">LGPD</span></div>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>
+
+<!-- ============ PROJETOS ============ -->
+<section id="projetos" aria-labelledby="proj-titulo">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="label reveal">Projetos</p><h2 id="proj-titulo" class="reveal">O que eu <em>construí</em></h2></div>
+      <p class="reveal">Do planejamento do produto à integração entre hardware e software.</p>
+    </div>
+    <div class="projects">
+      <article class="project card glow reveal">
+        <div class="project__top"><span class="project__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18 6"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span><span class="chip chip--done">Projeto em equipe</span></div>
+        <h3>Desenvolvimento de Solução de Monitoramento</h3>
+        <p>Criação de um sistema voltado a soluções de monitoramento, do modelo de negócio à documentação técnica.</p>
+        <ul class="ticks">
+          <li>Criação e desenvolvimento de um sistema de monitoramento.</li>
+          <li>Planejamento do produto, definição de funcionalidades e do modelo de negócio.</li>
+          <li>Pesquisa e análise de tecnologias, componentes e soluções.</li>
+          <li>Levantamento e análise de custos, precificação e viabilidade financeira.</li>
+          <li>Planejamento da integração entre hardware e software.</li>
+          <li>Organização da documentação técnica, comercial e estratégica.</li>
+        </ul>
+        <div class="tags"><span class="tag">Gestão de projetos</span><span class="tag">Análise de dados</span><span class="tag">Hardware + software</span><span class="tag">Empreendedorismo</span></div>
+      </article>
+      <article class="project project--mini card glow reveal" style="--d:.08s">
+        <div class="project__top"><span class="project__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></span><span class="chip chip--now">Este site</span></div>
+        <h3>Portfólio 3D</h3>
+        <p>Site feito do zero com HTML, CSS e JavaScript, com um avatar 3D em tempo real (Three.js) sobre uma plataforma elevatória.</p>
+        <ul class="ticks">
+          <li>Tema claro/escuro e layout responsivo.</li>
+          <li>Cena 3D com sombras, reflexos e animação.</li>
+          <li>Acessível e leve: sem frameworks.</li>
+        </ul>
+        <a class="project__link" href="https://github.com/RaioWhitex" target="_blank" rel="noopener noreferrer">Ver no GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HABILIDADES ============ -->
+<section id="habilidades" aria-labelledby="hab-titulo">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="label reveal">Habilidades</p><h2 id="hab-titulo" class="reveal">Minha <em>caixa de ferramentas</em></h2></div>
+      <div class="filters reveal" role="group" aria-label="Filtrar habilidades">
+        <button type="button" data-filter="all" aria-pressed="true">Todas</button>
+        <button type="button" data-filter="dev" aria-pressed="false">Desenvolvimento</button>
+        <button type="button" data-filter="data" aria-pressed="false">Dados &amp; Office</button>
+        <button type="button" data-filter="infra" aria-pressed="false">Infra &amp; Suporte</button>
+        <button type="button" data-filter="tools" aria-pressed="false">Ferramentas</button>
+      </div>
+    </div>
+    <ul class="skills reveal">
+      <li class="skill card glow" data-cat="dev" data-level="1">
+        <span class="skill__icon" style="--c:#e34f26;color:#fff" aria-hidden="true">HTML</span>
+        <span class="skill__body"><span class="skill__name">HTML5</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="dev" data-level="1">
+        <span class="skill__icon" style="--c:#1f6fd1;color:#fff" aria-hidden="true">CSS</span>
+        <span class="skill__body"><span class="skill__name">CSS3</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="dev" data-level="1">
+        <span class="skill__icon" style="--c:#f0db4f;color:#1b1b1b" aria-hidden="true">JS</span>
+        <span class="skill__body"><span class="skill__name">JavaScript</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="dev" data-level="1">
+        <span class="skill__icon" style="--c:#e76f00;color:#fff" aria-hidden="true">JV</span>
+        <span class="skill__body"><span class="skill__name">Java</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="dev" data-level="1">
+        <span class="skill__icon" style="--c:#3776ab;color:#ffd43b" aria-hidden="true">PY</span>
+        <span class="skill__body"><span class="skill__name">Python</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="dev" data-level="1">
+        <span class="skill__icon" style="--c:#336791;color:#fff" aria-hidden="true">SQL</span>
+        <span class="skill__body"><span class="skill__name">SQL</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="data" data-level="2">
+        <span class="skill__icon" style="--c:#1d6f42;color:#fff" aria-hidden="true">X</span>
+        <span class="skill__body"><span class="skill__name">Excel</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Intermediário</span></span>
+      </li>
+      <li class="skill card glow" data-cat="data" data-level="2">
+        <span class="skill__icon" style="--c:#f2c811;color:#1b1b1b" aria-hidden="true">BI</span>
+        <span class="skill__body"><span class="skill__name">Power BI</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Intermediário</span></span>
+      </li>
+      <li class="skill card glow" data-cat="data" data-level="2">
+        <span class="skill__icon" style="--c:#2b579a;color:#fff" aria-hidden="true">W</span>
+        <span class="skill__body"><span class="skill__name">Word</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Intermediário</span></span>
+      </li>
+      <li class="skill card glow" data-cat="data" data-level="2">
+        <span class="skill__icon" style="--c:#d24726;color:#fff" aria-hidden="true">P</span>
+        <span class="skill__body"><span class="skill__name">PowerPoint</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Intermediário</span></span>
+      </li>
+      <li class="skill card glow" data-cat="data" data-level="1">
+        <span class="skill__icon" style="--c:#0078d4;color:#fff" aria-hidden="true">O</span>
+        <span class="skill__body"><span class="skill__name">Outlook</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico · <span class="learning">rumo ao intermediário</span></span></span>
+      </li>
+      <li class="skill card glow" data-cat="data" data-level="1">
+        <span class="skill__icon" style="--c:#077568;color:#fff" aria-hidden="true">Pb</span>
+        <span class="skill__body"><span class="skill__name">Publisher</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="infra" data-level="2">
+        <span class="skill__icon" style="--c:#0078d4;color:#fff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm0 13 7.5 1.1v-7H3v5.9Zm8.4 1.2L21 21v-8.4h-9.6v7.1Zm0-15.4v7.2H21V3l-9.6 1.3Z"/></svg></span>
+        <span class="skill__body"><span class="skill__name">Windows 10 e 11</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Intermediário</span></span>
+      </li>
+      <li class="skill card glow" data-cat="infra" data-level="1">
+        <span class="skill__icon" style="--c:#6d5dfc;color:#fff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="2.5" width="6" height="5" rx="1"/><rect x="2.5" y="16.5" width="6" height="5" rx="1"/><rect x="15.5" y="16.5" width="6" height="5" rx="1"/><path d="M12 7.5v4.5M5.5 16.5V12h13v4.5"/></svg></span>
+        <span class="skill__body"><span class="skill__name">Redes de computadores</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico · <span class="learning">aprendendo</span></span></span>
+      </li>
+      <li class="skill card glow" data-cat="infra" data-level="1">
+        <span class="skill__icon" style="--c:#5f6b7a;color:#fff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></span>
+        <span class="skill__body"><span class="skill__name">Manutenção de computadores</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico · <span class="learning">aprendendo</span></span></span>
+      </li>
+      <li class="skill card glow" data-cat="infra" data-level="2">
+        <span class="skill__icon" style="--c:#e8a317;color:#1b1b1b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span>
+        <span class="skill__body"><span class="skill__name">Instalações elétricas</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Formação técnica</span></span>
+      </li>
+      <li class="skill card glow" data-cat="infra" data-level="1">
+        <span class="skill__icon" style="--c:#be1e2d;color:#fff" aria-hidden="true">A</span>
+        <span class="skill__body"><span class="skill__name">AutoCAD</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="tools" data-level="1">
+        <span class="skill__icon" style="--c:#f05032;color:#fff" aria-hidden="true">Git</span>
+        <span class="skill__body"><span class="skill__name">Git</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="tools" data-level="1">
+        <span class="skill__icon" style="--c:#24292f;color:#fff" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
+        <span class="skill__body"><span class="skill__name">GitHub</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="tools" data-level="1">
+        <span class="skill__icon" style="--c:#ea4b71;color:#fff" aria-hidden="true">n8n</span>
+        <span class="skill__body"><span class="skill__name">n8n</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="tools" data-level="1">
+        <span class="skill__icon" style="--c:#007acc;color:#fff" aria-hidden="true">VS</span>
+        <span class="skill__body"><span class="skill__name">VS Code</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Uso diário</span></span>
+      </li>
+      <li class="skill card glow" data-cat="tools" data-level="1">
+        <span class="skill__icon" style="--c:#111;color:#21d789" aria-hidden="true">PC</span>
+        <span class="skill__body"><span class="skill__name">PyCharm</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+      <li class="skill card glow" data-cat="tools" data-level="1">
+        <span class="skill__icon" style="--c:#5c5543;color:#fff" aria-hidden="true">GP</span>
+        <span class="skill__body"><span class="skill__name">GIMP</span><span class="skill__lvl"><span class="meter" aria-hidden="true"></span>Básico</span></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FORMAÇÃO ============ -->
+<section id="formacao" aria-labelledby="form-titulo">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="label reveal">Formação</p><h2 id="form-titulo" class="reveal">Trajetória <em>acadêmica</em></h2></div>
+      <p class="reveal">Base técnica sólida em elétrica e, agora, desenvolvimento de sistemas.</p>
+    </div>
+    <div class="edu">
+      <article class="edu__main card glow reveal">
+        <div class="edu__meta"><span class="chip chip--now">Em andamento</span><span class="chip">2026 — 2028</span></div>
+        <h3>Análise e Desenvolvimento de Sistemas</h3>
+        <p class="edu__school">Faculdade Flamingo</p>
+        <ul class="ticks">
+          <li>Desenvolvimento web: HTML, CSS e JavaScript.</li>
+          <li>Desenvolvimento back-end em Java.</li>
+          <li>Lógica de programação e algoritmos.</li>
+        </ul>
+        <div class="progress"><div class="progress__row"><span>Progresso</span><span>2º semestre</span></div><div class="progress__bar"><span style="--p:25%"></span></div></div>
+      </article>
+      <article class="edu__main card glow reveal" style="--d:.08s">
+        <div class="edu__meta"><span class="chip chip--done">Concluído</span><span class="chip">2023 — 2025</span></div>
+        <h3>Técnico em Eletrotécnica</h3>
+        <p class="edu__school">ETEC Jaraguá</p>
+        <ul class="ticks">
+          <li>Instalações elétricas residenciais e industriais.</li>
+          <li>Interpretação de diagramas e projetos elétricos; plantas baixas.</li>
+          <li>Noções de manutenção preventiva e corretiva em sistemas elétricos.</li>
+        </ul>
+        <div class="progress"><div class="progress__row"><span>Progresso</span><span>100%</span></div><div class="progress__bar"><span style="--p:100%"></span></div></div>
+      </article>
+      <div class="edu__side">
+        <article class="course card glow reveal"><h3>Power BI</h3><p>Hashtag Treinamentos</p><span class="chip chip--done">Concluído</span></article>
+        <article class="course card glow reveal" style="--d:.05s"><h3>HTML e CSS</h3><p>Curso em Vídeo — Gustavo Guanabara</p><span class="chip chip--now">Em andamento</span></article>
+        <article class="course card glow reveal" style="--d:.1s"><h3>Outlook intermediário</h3><p>Estudo contínuo</p><span class="chip chip--now">Estudando</span></article>
+        <article class="course card glow reveal" style="--d:.15s"><h3>Redes e manutenção de computadores</h3><p>Hardware, sistemas e conectividade</p><span class="chip chip--now">Estudando</span></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPETÊNCIAS ============ -->
+<section id="competencias" aria-labelledby="comp-titulo">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="label reveal">Competências</p><h2 id="comp-titulo" class="reveal">Como eu <em>trabalho</em></h2></div>
+    </div>
+    <div class="traits">
+      <div class="traits__quote card glow reveal">
+        <blockquote>“Pensamento <b>lógico e analítico</b>, atenção aos detalhes e compromisso com <b>qualidade</b>, segurança da informação e conformidade com a <b>LGPD</b>.”</blockquote>
+        <div class="tags"><span class="tag">Resolução de problemas</span><span class="tag">Trabalho em equipe</span><span class="tag">Comunicação</span><span class="tag">Adaptação</span><span class="tag">Boas práticas</span></div>
+      </div>
+      <div class="traits__grid">
+        <article class="trait card glow reveal"><span class="trait__n">01</span><h3>Decisões com dados</h3><p>Liderança e tomada de decisão orientadas por dados.</p></article>
+        <article class="trait card glow reveal" style="--d:.05s"><span class="trait__n">02</span><h3>Sob pressão</h3><p>Agilidade para atuar em cenários diferentes e resolver demandas.</p></article>
+        <article class="trait card glow reveal" style="--d:.1s"><span class="trait__n">03</span><h3>Aprendizado rápido</h3><p>Facilidade para aprender e me adaptar a novas tecnologias.</p></article>
+        <article class="trait card glow reveal" style="--d:.15s"><span class="trait__n">04</span><h3>Organização</h3><p>Documentação, processos e dados sempre em ordem.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section id="contato" aria-labelledby="contato-titulo">
+  <div class="wrap contact">
+    <div class="contact__intro card reveal">
+      <p class="label">Contato</p>
+      <h2 id="contato-titulo">Vamos construir algo juntos?</h2>
+      <p>Estou aberto a estágio, trainee e vagas de nível inicial — em desenvolvimento web, dados ou suporte técnico.</p>
+      <div class="links">
+        <button type="button" data-copy="stefersongustavofc@gmail.com"><span class="links__ico" style="--c:#6d5dfc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="links__txt"><b>E-mail</b><span>stefersongustavofc@gmail.com</span></span><span class="links__go">copiar</span></button>
+        <a href="https://wa.me/5511933914350" target="_blank" rel="noopener noreferrer"><span class="links__ico" style="--c:#25d366"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.16-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.06.9.9-2.98-.2-.31A8.2 8.2 0 1 1 12.04 20.1Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.17.25-.64.8-.78.97-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.37-2.94c-.25-.44.25-.41.72-1.36.08-.16.04-.3-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.85 2.03 4.76 4.76 0 0 0 1 2.52 10.9 10.9 0 0 0 4.17 3.68c1.55.67 2.16.73 2.93.61.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28Z"/></svg></span><span class="links__txt"><b>WhatsApp</b><span>(11) 93391-4350</span></span><span class="links__go">abrir</span></a>
+        <a href="https://www.linkedin.com/in/gustavo-steferson-1896263a8/" target="_blank" rel="noopener noreferrer"><span class="links__ico" style="--c:#0a66c2"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm7 0h3.8v1.5h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.5 4.77 5.75v5.7h-4v-5.05c0-1.2-.02-2.75-1.7-2.75-1.7 0-1.95 1.3-1.95 2.66v5.14H10v-11Z"/></svg></span><span class="links__txt"><b>LinkedIn</b><span>gustavo-steferson</span></span><span class="links__go">abrir</span></a>
+        <a href="https://github.com/RaioWhitex" target="_blank" rel="noopener noreferrer"><span class="links__ico" style="--c:#24292f"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span><span class="links__txt"><b>GitHub</b><span>@RaioWhitex</span></span><span class="links__go">abrir</span></a>
+        <a href="https://www.instagram.com/steferson_ofc" target="_blank" rel="noopener noreferrer"><span class="links__ico" style="--c:linear-gradient(135deg,#f58529,#dd2a7b,#8134af)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></span><span class="links__txt"><b>Instagram</b><span>@steferson_ofc</span></span><span class="links__go">abrir</span></a>
+      </div>
+    </div>
+    <form id="form" class="form card reveal" style="--d:.08s" data-to="stefersongustavofc@gmail.com" novalidate>
+      <h3>Envie uma mensagem</h3>
+      <div class="row">
+        <div class="field"><input id="f-nome" name="name" type="text" autocomplete="name" placeholder=" " required><label for="f-nome">Seu nome</label></div>
+        <div class="field"><input id="f-email" name="email" type="email" autocomplete="email" placeholder=" " required><label for="f-email">Seu e-mail</label></div>
+      </div>
+      <div class="field"><input id="f-assunto" name="subject" type="text" placeholder=" "><label for="f-assunto">Assunto (opcional)</label></div>
+      <div class="field"><textarea id="f-msg" name="message" placeholder=" " required></textarea><label for="f-msg">Mensagem</label></div>
+      <div class="form__foot">
+        <span class="form__note">Abre seu app de e-mail com a mensagem pronta.</span>
+        <button class="btn" type="submit">Enviar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <p class="form__status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 </main>
 
-<footer class="site-footer container">
-  <span class="blink">&gt; CONSTRUINDO IDEIAS</span>
-  <nav aria-label="Rodapé"><a href="index.html">Início</a> <a href="sobre.html">Sobre</a> <a href="habilidades.html">Habilidades</a> <a href="formacao.html">Formação</a> <a href="contato.html">Contato</a></nav>
-  <span>© <span data-year>2026</span> GUSTAVO.DEV — HTML · CSS · JS</span>
+<footer class="wrap footer">
+  <span>© <span data-year>2026</span> Gustavo Steferson de Souza Rocha</span>
+  <span>Feito com HTML, CSS, JavaScript e Three.js</span>
+  <a class="to-top" href="#sobre">Voltar ao topo <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
 </footer>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/app.js" defer></script>
+<script type="importmap">
+  { "imports": { "three": "./assets/vendor/three/three.module.min.js", "three/addons/": "./assets/vendor/three/addons/" } }
+</script>
+<script type="module">
+  import { mountAvatar } from './assets/js/avatar.js';
+  const stage = document.querySelector('.stage');
+  const hasWebGL = (() => {
+    try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; }
+  })();
+  if (!hasWebGL) {
+    stage.classList.add('no-webgl');
+  } else {
+    mountAvatar(stage, { model: stage.dataset.model || null }).then((api) => {
+      const btn = stage.querySelector('.stage__toggle');
+      btn.addEventListener('click', () => {
+        const paused = api.toggle();
+        btn.setAttribute('aria-pressed', String(paused));
+        btn.setAttribute('aria-label', paused ? 'Retomar animação' : 'Pausar animação');
+      });
+    }).catch((err) => { console.error(err); stage.classList.add('no-webgl'); });
+  }
+</script>
 </body>
 </html>
