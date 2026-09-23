@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gustavo Steferson — Desenvolvedor de Sistemas em formação</title>
+<meta name="description" content="Portfólio de Gustavo Steferson de Souza Rocha: estudante de Análise e Desenvolvimento de Sistemas e Técnico em Eletrotécnica.">
+<meta name="author" content="Gustavo Steferson de Souza Rocha">
+<meta name="theme-color" content="#030303">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gustavo Steferson — Desenvolvedor de Sistemas em formação">
+<meta property="og:description" content="Portfólio de Gustavo Steferson de Souza Rocha: estudante de Análise e Desenvolvimento de Sistemas e Técnico em Eletrotécnica.">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    try { if (localStorage.getItem('gs-accent') === 'gold') d.dataset.accent = 'gold'; } catch (e) {}
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="loader" role="status" aria-live="polite" aria-label="Carregando página">
+  <div class="loader__terminal">
+    <div class="loader__top"><span>// GUSTAVO.DEV</span><span>BOOT_SEQUENCE.EXE</span></div>
+    <div class="loader__readout"><p class="loader__label">INICIANDO_SISTEMA</p><strong class="loader__pct">00%</strong></div>
+    <div class="loader__track"><span class="loader__bar"></span></div>
+    <p class="loader__log"></p>
+  </div>
+</div>
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
+
+<header class="site-header">
+  <a class="site-logo" href="index.html" aria-label="Página inicial"><span aria-hidden="true">//</span> GUSTAVO.DEV</a>
+  <nav class="nav" id="navegacao" aria-label="Navegação principal">
+    <a href="index.html" aria-current="page" data-scramble>Início</a>
+    <a href="sobre.html" data-scramble>Sobre</a>
+    <a href="habilidades.html" data-scramble>Habilidades</a>
+    <a href="formacao.html" data-scramble>Formação</a>
+    <a href="contato.html" data-scramble>Contato</a>
+  </nav>
+  <div class="header-tools">
+    <div class="accent-switch" role="group" aria-label="Cor de destaque">
+      <span>COR</span>
+      <button type="button" data-accent="blue" aria-pressed="true" aria-label="Azul elétrico"><span></span></button>
+      <button type="button" data-accent="gold" aria-pressed="false" aria-label="Ouro"><span></span></button>
+    </div>
+    <button class="menu-trigger" type="button" aria-controls="navegacao" aria-expanded="false">[ MENU ]</button>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<section class="hero container" aria-labelledby="hero-title">
+  <div class="hero__main">
+    <p class="eyebrow reveal"><span>//</span> Portfólio pessoal — v2.0</p>
+    <h1 id="hero-title" class="hero__title display">
+      <span class="reveal-mask glitch" data-text="Gustavo" style="--d:.05s">Gustavo</span>
+      <span class="reveal-mask" style="--d:.15s">Steferson</span>
+      <span class="reveal-mask outline" style="--d:.25s">.dev</span>
+    </h1>
+    <p class="hero__role reveal" style="--d:.35s">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      <span class="typed" data-typed='["Analista e Desenvolvedor de Sistemas em formação","Técnico em Eletrotécnica","Front-end: HTML5 · CSS3 · JavaScript","Perfil analítico e organizado"]'>Analista e Desenvolvedor de Sistemas em formação</span>
+    </p>
+    <p class="hero__intro reveal" style="--d:.45s">
+      Atualmente curso <strong>Análise e Desenvolvimento de Sistemas</strong>, caminhando para o 2º semestre,
+      e me preparo para um semestre de formação no <strong>PROA</strong>, pelo programa Profissão.
+      Também sou técnico em Eletrotécnica, com experiência na criação e análise de plantas baixas residenciais e industriais.
+    </p>
+    <div class="btn-row reveal" style="--d:.55s">
+      <a class="btn" href="contato.html">Falar comigo <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn--ghost" href="habilidades.html">Ver habilidades <span class="arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <aside class="hero__side" aria-label="Status do sistema">
+    <div class="window globe-window reveal" style="--d:.3s">
+      <div class="window__bar"><span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>GLOBE.EXE</span><span>SP / BR</span></div>
+      <canvas data-scene="globe" aria-hidden="true"></canvas>
+      <span class="globe-window__tag">LAT -23.55 · LON -46.63</span>
+    </div>
+    <div class="window sysinfo reveal" style="--d:.4s">
+      <div class="window__bar"><span>SYSTEM</span><span data-clock>--:--:--</span></div>
+      <dl>
+        <dt>Status</dt><dd><span class="status"><span class="pulse-dot pulse-dot--round" aria-hidden="true"></span>Online</span></dd>
+        <dt>Tipo</dt><dd>Portfólio pessoal</dd>
+        <dt>Stack</dt><dd>HTML · CSS · JS</dd>
+        <dt>Curso</dt><dd>ADS — 2º semestre</dd>
+        <dt>Local</dt><dd>São Paulo, BR</dd>
+      </dl>
+    </div>
+  </aside>
+  <span class="scroll-hint" aria-hidden="true">Role</span>
+</section>
+
+<div class="marquee " aria-hidden="true"><div class="marquee__track"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Python</span><span>Power BI</span><span>Excel</span><span>AutoCAD</span><span>GitHub</span><span>VS Code</span><span>Modelagem de Dados</span></div></div>
+
+<section class="section container" aria-labelledby="index-title">
+  <div class="section-head reveal">
+    <div>
+      <p class="eyebrow"><span>//</span> Índice</p>
+      <h2 id="index-title" class="display">Explore o sistema</h2>
+    </div>
+    <span class="section-head__index" aria-hidden="true">01</span>
+  </div>
+  <nav class="index-list" aria-label="Páginas do portfólio">
+    <a class="reveal" href="sobre.html"><span class="index-list__num">01 /</span><span class="index-list__title">Sobre</span><span class="index-list__desc">Quem sou, como trabalho e o que me move.</span><span class="index-list__arrow" aria-hidden="true">→</span></a>
+    <a class="reveal" href="habilidades.html"><span class="index-list__num">02 /</span><span class="index-list__title">Habilidades</span><span class="index-list__desc">Stack, ferramentas e nível de proficiência.</span><span class="index-list__arrow" aria-hidden="true">→</span></a>
+    <a class="reveal" href="formacao.html"><span class="index-list__num">03 /</span><span class="index-list__title">Formação</span><span class="index-list__desc">Trajetória acadêmica e cursos concluídos.</span><span class="index-list__arrow" aria-hidden="true">→</span></a>
+    <a class="reveal" href="contato.html"><span class="index-list__num">04 /</span><span class="index-list__title">Contato</span><span class="index-list__desc">WhatsApp, LinkedIn, GitHub, Instagram e e-mail.</span><span class="index-list__arrow" aria-hidden="true">→</span></a>
+  </nav>
+</section>
+
+<section class="section container" aria-labelledby="stats-title">
+  <h2 id="stats-title" class="sr-only">Números</h2>
+  <div class="stats reveal" data-observe>
+    <div class="stat"><div class="stat__value"><span data-count="2" data-pad="2">02</span></div><p class="stat__label">Formações principais</p></div>
+    <div class="stat"><div class="stat__value"><span data-count="9" data-pad="2">09</span></div><p class="stat__label">Tecnologias mapeadas</p></div>
+    <div class="stat"><div class="stat__value"><span data-count="6" data-pad="2">06</span></div><p class="stat__label">Ferramentas no dia a dia</p></div>
+    <div class="stat"><div class="stat__value"><span data-count="100">100</span><sup>%</sup></div><p class="stat__label">Vontade de aprender</p></div>
+  </div>
+</section>
+
+<section class="section container" aria-labelledby="cta-title">
+  <div class="cta reveal">
+    <p class="eyebrow"><span>//</span> Próximo passo</p>
+    <h2 id="cta-title" class="cta__title display">Vamos <span>conversar?</span></h2>
+    <p class="hero__intro">Aberto a oportunidades em áreas analíticas e técnicas — planejamento, desenvolvimento, análise e suporte a processos internos.</p>
+    <div class="btn-row"><a class="btn" href="contato.html">Iniciar contato <span class="arrow" aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer container">
+  <span class="blink">&gt; CONSTRUINDO IDEIAS</span>
+  <nav aria-label="Rodapé"><a href="index.html">Início</a> <a href="sobre.html">Sobre</a> <a href="habilidades.html">Habilidades</a> <a href="formacao.html">Formação</a> <a href="contato.html">Contato</a></nav>
+  <span>© <span data-year>2026</span> GUSTAVO.DEV — HTML · CSS · JS</span>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
