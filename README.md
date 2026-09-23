@@ -1,56 +1,47 @@
-# // GUSTAVO.DEV
+# Gustavo Steferson — portfólio
 
-Portfólio pessoal de **Gustavo Steferson de Souza Rocha**: estudante de Análise e Desenvolvimento de Sistemas e Técnico em Eletrotécnica.
+Portfólio pessoal de **Gustavo Steferson de Souza Rocha**: técnico em Eletrotécnica e estudante de Análise e Desenvolvimento de Sistemas.
 
-Feito com **HTML, CSS e JavaScript puros**, sem frameworks nem etapa de build. Estética brutalista escura, com grade de bordas, tipografia display condensada, rótulos monoespaçados e um acento elétrico que pode ser trocado entre **azul** e **ouro** (a identidade preto e dourado do portfólio anterior).
+Página única feita com **HTML, CSS e JavaScript puros**, mais **Three.js** para o avatar 3D. Não tem etapa de build.
 
-## Páginas
+## Destaques
 
-| Arquivo | Conteúdo |
-|---|---|
-| `index.html` | Hero com texto digitado, globo 3D de pontos em canvas, painel "SYSTEM" com relógio ao vivo, marquee, índice e números |
-| `sobre.html` | Bio, ficha técnica e perfil profissional |
-| `habilidades.html` | Cards de stack com inclinação 3D + spotlight e barras de proficiência segmentadas |
-| `formacao.html` | Linha do tempo e "save slots" com a trajetória acadêmica |
-| `contato.html` | Título gigante, adesivo animado, canais numerados, faixa de disponibilidade e formulário |
-| `404.html` | Página de erro |
-
-## Efeitos
-
-- Loader "boot sequence" (mais curto a partir da segunda página da sessão)
-- Canvas animado (globo de pontos e terreno em onda) que reage ao mouse e pausa fora da tela
-- Revelação ao rolar, glitch nos títulos, texto embaralhado no hover do menu
-- Cursor personalizado, barra de progresso de rolagem, grão de filme
-- Troca de cor de destaque (azul/ouro), salva no navegador
-- Botão "copiar e-mail" e formulário que abre o e-mail já preenchido
-- Responsivo, acessível (skip link, foco visível, ARIA) e com `prefers-reduced-motion` respeitado
+- **Avatar 3D na tela inicial:** um avatar com o rosto do Gustavo, camisa preta e branca com tentáculos, calça jeans preta e tênis brancos, girando sobre uma **plataforma elevatória** (mecanismo de tesoura que sobe ao carregar). Dá para girar arrastando e pausar a animação.
+- Layout "bento" com cartões de vidro, tema **claro/escuro** e brilho que segue o mouse.
+- Seções: Sobre mim, Experiência, Projetos, Habilidades (com filtro), Formação, Competências e Contato.
+- Responsivo e acessível, respeita `prefers-reduced-motion` e pausa o 3D quando sai da tela.
 
 ## Estrutura
 
 ```
-├── index.html, sobre.html, habilidades.html, formacao.html, contato.html, 404.html
-└── assets/
-    ├── css/style.css   # tokens, layout e animações
-    ├── js/main.js      # loader, canvas, interações
-    └── img/favicon.svg
+index.html, 404.html
+assets/
+├── css/main.css
+├── js/app.js          # tema, menu, filtros, formulário
+├── js/avatar.js       # cena 3D (avatar, plataforma, luzes)
+├── img/avatar/        # face.webp (rosto) e shirt.webp (estampa da camisa)
+└── vendor/three/      # Three.js r170 (licença MIT)
 ```
 
 ## Rodar localmente
 
-Abra `index.html` no navegador, ou sirva a pasta:
+O 3D usa módulos ES, então sirva a pasta (abrir o arquivo direto não funciona):
 
 ```bash
 python3 -m http.server 8000
 # http://localhost:8000
 ```
 
+## Usar um avatar 3D ainda mais realista (opcional)
+
+O avatar padrão é montado em código. Para trocar por um modelo realista feito a partir de fotos:
+
+1. Gere um modelo `.glb` do seu corpo e rosto em um gerador de avatar 3D a partir de selfie (por exemplo, o Avaturn), ou num app de escaneamento 3D para celular.
+2. Salve o arquivo como `assets/models/avatar.glb`.
+3. Em `index.html`, troque `data-model=""` por `data-model="assets/models/avatar.glb"` na `<div class="stage">`.
+
+O site ajusta a escala sozinho e coloca o modelo girando sobre a plataforma.
+
 ## Publicar no GitHub Pages
 
 Settings → Pages → *Deploy from a branch* → escolha a branch e a pasta `/ (root)`.
-
-## Personalizar
-
-- **Cores:** variáveis no topo de `assets/css/style.css` (`--accent`, `--accent-bright`, `--accent-glow`).
-- **Fontes:** Anton, Inter e JetBrains Mono (Google Fonts), carregadas no `<head>` de cada página.
-
-Layout inspirado na estrutura de [joaofortes.dev](https://joaofortes.dev/contact). Todo o código e os elementos visuais são originais.
