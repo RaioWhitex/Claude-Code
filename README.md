@@ -6,8 +6,8 @@ Página única feita com **HTML, CSS e JavaScript puros**, mais **Three.js** par
 
 ## Destaques
 
-- **Avatar 3D na tela inicial:** um avatar com o rosto do Gustavo, camisa preta e branca com tentáculos, calça jeans preta e tênis brancos, girando sobre uma **plataforma elevatória** (mecanismo de tesoura que sobe ao carregar). Dá para girar arrastando e pausar a animação.
-- Layout "bento" com cartões de vidro, tema **claro/escuro** e brilho que segue o mouse.
+- **Personagem 360° na tela inicial:** fotos reais do personagem (frente, lados e costas), recortadas do fundo, girando sobre uma **plataforma elevatória 3D** (mecanismo de tesoura que sobe ao carregar). A foto exibida acompanha o ângulo da plataforma, com transição suave entre as vistas. Dá para girar arrastando e pausar a animação.
+- Paleta **preto, branco e dourado**, com tema claro/escuro e cartões de vidro.
 - Seções: Sobre mim, Experiência, Projetos, Habilidades (com filtro), Formação, Competências e Contato.
 - Responsivo e acessível, respeita `prefers-reduced-motion` e pausa o 3D quando sai da tela.
 
@@ -19,7 +19,7 @@ assets/
 ├── css/main.css
 ├── js/app.js          # tema, menu, filtros, formulário
 ├── js/avatar.js       # cena 3D (avatar, plataforma, luzes)
-├── img/avatar/        # face.webp (rosto) e shirt.webp (estampa da camisa)
+├── img/avatar/        # view-0..3.webp: frente, lado direito, costas, lado esquerdo
 └── vendor/three/      # Three.js r170 (licença MIT)
 ```
 
@@ -32,9 +32,11 @@ python3 -m http.server 8000
 # http://localhost:8000
 ```
 
-## Usar um avatar 3D ainda mais realista (opcional)
+## Trocar as fotos ou usar um modelo 3D de verdade (opcional)
 
-O avatar padrão é montado em código. Para trocar por um modelo realista feito a partir de fotos:
+**Fotos:** substitua `assets/img/avatar/view-0.webp` a `view-3.webp` por PNG/WebP com fundo transparente, em 640×1400 px, com a pessoa ocupando 1370 px de altura e os pés 12 px acima da borda de baixo. A ordem é frente, lado direito, costas, lado esquerdo.
+
+**Modelo 3D (.glb):** para um giro com volume real, em vez de fotos:
 
 1. Gere um modelo `.glb` do seu corpo e rosto em um gerador de avatar 3D a partir de selfie (por exemplo, o Avaturn), ou num app de escaneamento 3D para celular.
 2. Salve o arquivo como `assets/models/avatar.glb`.
