@@ -1,15 +1,15 @@
 # Gustavo Steferson — portfólio
 
-Portfólio pessoal de **Gustavo Steferson de Souza Rocha**: técnico em Eletrotécnica e estudante de Análise e Desenvolvimento de Sistemas.
+Portfólio pessoal de **Gustavo Steferson de Souza Rocha**: Auxiliar de TI, técnico em Eletrotécnica e estudante de Análise e Desenvolvimento de Sistemas.
 
-Página única feita com **HTML, CSS e JavaScript puros**, mais **Three.js** para o avatar 3D. Não tem etapa de build.
+Página única feita com **HTML, CSS e JavaScript puros**, mais **Three.js** para o palco 3D. Não tem etapa de build.
 
 ## Destaques
 
-- **Personagem 360° na tela inicial:** fotos reais do personagem (frente, lados e costas), recortadas do fundo, girando sobre uma **plataforma elevatória 3D** (mecanismo de tesoura que sobe ao carregar). A foto exibida acompanha o ângulo da plataforma, com transição suave entre as vistas. Dá para girar arrastando e pausar a animação.
-- Paleta **preto, branco e dourado**, com tema claro/escuro e cartões de vidro.
-- Seções: Sobre mim, Experiência, Projetos, Habilidades (com filtro), Formação, Competências e Contato.
-- Responsivo e acessível, respeita `prefers-reduced-motion` e pausa o 3D quando sai da tela.
+- **Personagem em relevo 3D:** a foto do Gustavo de terno, recortada, vira uma malha 3D (mapa de profundidade gerado por IA + volume da silhueta) que gira em vai-e-vem sobre a plataforma de mármore. Dá para girar arrastando e pausar a animação.
+- Layout em cartões de vidro, paleta **branco, preto e dourado**, com tema claro/escuro.
+- Seções: Início, Sobre, O que eu faço, Tecnologias (com logos e filtro), Experiência, Projetos, Formação (instituições + cursos extracurriculares), Método e Contato.
+- **Formulário de contato** que envia as mensagens direto para o e-mail, via [FormSubmit](https://formsubmit.co).
 
 ## Estrutura
 
@@ -18,8 +18,10 @@ index.html, 404.html
 assets/
 ├── css/main.css
 ├── js/app.js          # tema, menu, filtros, formulário
-├── js/avatar.js       # cena 3D (avatar, plataforma, luzes)
-├── img/avatar/        # view-0..3.webp: frente, lado direito, costas, lado esquerdo
+├── js/stage.js        # palco 3D (plataforma + personagem em relevo)
+├── img/hero/          # stage.webp (plataforma), figure.webp + figure-depth.png (personagem), fallback.webp
+├── img/logos/         # logos das ferramentas (SVG)
+├── img/projects/      # imagens dos projetos
 └── vendor/three/      # Three.js r170 (licença MIT)
 ```
 
@@ -32,18 +34,10 @@ python3 -m http.server 8000
 # http://localhost:8000
 ```
 
-## Trocar as fotos ou usar um modelo 3D de verdade (opcional)
+## Formulário de contato (ativação única)
 
-**Fotos:** substitua `assets/img/avatar/view-0.webp` a `view-3.webp` por PNG/WebP com fundo transparente, em 640×1400 px, com a pessoa ocupando 1370 px de altura e os pés 12 px acima da borda de baixo. A ordem é frente, lado direito, costas, lado esquerdo.
+As mensagens são enviadas pelo FormSubmit para `stefersongustavofc@gmail.com`. **Na primeira mensagem enviada pelo site, o FormSubmit manda um e-mail de confirmação para esse endereço: clique em "Activate Form".** A partir daí todas as mensagens chegam direto na caixa de entrada.
 
-**Modelo 3D (.glb):** para um giro com volume real, em vez de fotos:
+## Créditos dos logos
 
-1. Gere um modelo `.glb` do seu corpo e rosto em um gerador de avatar 3D a partir de selfie (por exemplo, o Avaturn), ou num app de escaneamento 3D para celular.
-2. Salve o arquivo como `assets/models/avatar.glb`.
-3. Em `index.html`, troque `data-model=""` por `data-model="assets/models/avatar.glb"` na `<div class="stage">`.
-
-O site ajusta a escala sozinho e coloca o modelo girando sobre a plataforma.
-
-## Publicar no GitHub Pages
-
-Settings → Pages → *Deploy from a branch* → escolha a branch e a pasta `/ (root)`.
+Logos das ferramentas vindos de conjuntos abertos da [Iconify](https://iconify.design): Logos (CC0), VSCode Icons (MIT), Devicon (MIT) e Simple Icons (CC0). As marcas pertencem aos seus respectivos donos.

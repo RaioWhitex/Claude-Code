@@ -17,56 +17,44 @@
   const themeBtn = $('.theme-btn');
   const applyTheme = (theme) => {
     root.dataset.theme = theme;
-    themeBtn?.setAttribute('aria-pressed', String(theme === 'light'));
-    $('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#f3f1ec' : '#07090d');
-    window.dispatchEvent(new CustomEvent('themechange'));
+    themeBtn?.setAttribute('aria-pressed', String(theme === 'dark'));
+    $('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0b0a09' : '#f6f4ef');
   };
   themeBtn?.addEventListener('click', () => {
-    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     safe.set('gs-theme', next);
     if (document.startViewTransition && !reduced) document.startViewTransition(() => applyTheme(next));
     else applyTheme(next);
   });
-  themeBtn?.setAttribute('aria-pressed', String(root.dataset.theme === 'light'));
+  applyTheme(root.dataset.theme || 'light');
 
   /* ---------- Menu mobile ---------- */
   const nav = $('.nav');
   const menuBtn = $('.menu-btn');
   const setMenu = (open) => {
-    nav.classList.toggle('is-open', open);
-    menuBtn.setAttribute('aria-expanded', String(open));
+    nav?.classList.toggle('is-open', open);
+    menuBtn?.setAttribute('aria-expanded', String(open));
   };
   menuBtn?.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
   $$('.nav__links a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   document.addEventListener('click', (e) => { if (nav && !nav.contains(e.target)) setMenu(false); });
 
-  /* ---------- Pílula deslizante + seção ativa ---------- */
-  const pill = $('.nav__pill');
+  /* ---------- Seção ativa no menu ---------- */
   const links = $$('.nav__links a');
-  const movePill = (a) => {
-    if (!pill || !a) { if (pill) pill.style.opacity = '0'; return; }
-    pill.style.opacity = '1';
-    pill.style.width = `${a.offsetWidth}px`;
-    pill.style.transform = `translateX(${a.offsetLeft}px)`;
-  };
-  const setActive = (id) => {
-    let current = null;
-    links.forEach((a) => {
-      const on = a.getAttribute('href') === `#${id}`;
-      a.classList.toggle('is-active', on);
-      if (on) { a.setAttribute('aria-current', 'true'); current = a; } else a.removeAttribute('aria-current');
-    });
-    movePill(current);
-  };
   if ('IntersectionObserver' in window) {
-    const sections = links.map((a) => $(a.getAttribute('href'))).filter(Boolean);
     const spy = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) setActive(en.target.id); });
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        links.forEach((a) => {
+          const on = a.getAttribute('href') === `#${en.target.id}`;
+          a.classList.toggle('is-active', on);
+          if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+        });
+      });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach((s) => spy.observe(s));
+    links.map((a) => $(a.getAttribute('href'))).filter(Boolean).forEach((s) => spy.observe(s));
   }
-  window.addEventListener('resize', () => movePill($('.nav__links a.is-active')));
 
   /* ---------- Revelação ao rolar ---------- */
   const revealEls = $$('.reveal');
@@ -77,46 +65,35 @@
         en.target.classList.add('is-visible');
         io.unobserve(en.target);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  /* ---------- Brilho que segue o mouse nos cartões ---------- */
-  if (window.matchMedia('(hover: hover)').matches) {
-    $$('.card.glow').forEach((card) => {
-      card.addEventListener('pointermove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        card.style.setProperty('--my', `${e.clientY - r.top}px`);
-      });
-    });
-  }
-
-  /* ---------- Habilidades: medidores e filtro ---------- */
-  $$('.skill').forEach((s) => {
-    const lvl = Number(s.dataset.level || 0);
-    const meter = $('.meter', s);
+  /* ---------- Tecnologias: medidores e filtro ---------- */
+  $$('.tool').forEach((t) => {
+    const lvl = Number(t.dataset.level || 0);
+    const meter = $('.meter', t);
     if (meter) meter.innerHTML = [1, 2, 3].map((i) => `<i class="${i <= lvl ? 'on' : ''}"></i>`).join('');
   });
   const filterBtns = $$('.filters button');
   filterBtns.forEach((btn) => btn.addEventListener('click', () => {
     const f = btn.dataset.filter;
     filterBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-    $$('.skill').forEach((s, i) => {
-      const show = f === 'all' || s.dataset.cat === f;
-      s.classList.toggle('is-hidden', !show);
-      s.classList.remove('is-entering');
+    $$('.tool').forEach((t, i) => {
+      const show = f === 'all' || t.dataset.cat === f;
+      t.classList.toggle('is-hidden', !show);
+      t.classList.remove('is-entering');
       if (show && !reduced) {
-        void s.offsetWidth;
-        s.style.animationDelay = `${(i % 12) * 25}ms`;
-        s.classList.add('is-entering');
+        void t.offsetWidth;
+        t.style.animationDelay = `${(i % 12) * 25}ms`;
+        t.classList.add('is-entering');
       }
     });
   }));
 
-  /* ---------- Copiar e-mail + toast ---------- */
+  /* ---------- Toast + copiar e-mail ---------- */
   const toast = (msg) => {
     let t = $('.toast');
     if (!t) {
@@ -128,24 +105,63 @@
     t.textContent = msg;
     t.classList.add('is-on');
     clearTimeout(t.timer);
-    t.timer = setTimeout(() => t.classList.remove('is-on'), 2200);
+    t.timer = setTimeout(() => t.classList.remove('is-on'), 2400);
   };
   $$('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(b.dataset.copy); toast('E-mail copiado!'); }
-    catch { toast(b.dataset.copy); }
+    try { await navigator.clipboard.writeText(b.dataset.copy); toast('E-mail copiado!'); } catch { toast(b.dataset.copy); }
   }));
 
-  /* ---------- Formulário → aplicativo de e-mail ---------- */
+  /* ---------- Formulário: envia direto para o e-mail do Gustavo ----------
+     Usa o FormSubmit (https://formsubmit.co), serviço gratuito sem backend.
+     Se o envio falhar, abre o aplicativo de e-mail com a mensagem pronta. */
   const form = $('#form');
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!form.reportValidity()) return;
+    const status = $('.form__status', form);
+    const btn = $('button[type="submit"]', form);
     const d = new FormData(form);
+    if (String(d.get('_honey') || '')) return; // robô preencheu o campo oculto
     const name = String(d.get('name')).trim();
-    const subject = String(d.get('subject') || '').trim() || `Contato pelo portfólio — ${name}`;
-    const body = `${String(d.get('message')).trim()}\n\n${name}\n${String(d.get('email')).trim()}`;
-    window.location.href = `mailto:${form.dataset.to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    $('.form__status', form).textContent = 'Abrindo seu aplicativo de e-mail…';
+    const email = String(d.get('email')).trim();
+    const topic = String(d.get('topic') || 'Contato');
+    const message = String(d.get('message')).trim();
+    const subject = `[Portfólio] ${topic} — ${name}`;
+
+    status.className = 'form__status';
+    status.textContent = 'Enviando…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${form.dataset.to}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          nome: name,
+          email,
+          assunto: topic,
+          mensagem: message,
+          _subject: subject,
+          _replyto: email,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) === 'false') throw new Error(data.message || 'falha no envio');
+      status.classList.add('ok');
+      status.textContent = 'Mensagem enviada! Obrigado — responderei em breve.';
+      form.reset();
+    } catch (err) {
+      status.classList.add('err');
+      status.innerHTML = 'Não consegui enviar agora. <a href="#" class="mail-fallback" style="text-decoration:underline">Enviar pelo seu e-mail</a>.';
+      $('.mail-fallback', status).addEventListener('click', (ev) => {
+        ev.preventDefault();
+        const body = `${message}\n\n${name}\n${email}`;
+        window.location.href = `mailto:${form.dataset.to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    } finally {
+      btn.disabled = false;
+    }
   });
 
   /* ---------- Ano ---------- */
