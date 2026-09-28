@@ -6,10 +6,11 @@
 <title>404 — Gustavo Steferson</title>
 <meta name="description" content="Página não encontrada.">
 <meta name="author" content="Gustavo Steferson de Souza Rocha">
-<meta name="theme-color" content="#070707">
+<meta name="theme-color" content="#f6f4ef">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404 — Gustavo Steferson">
 <meta property="og:description" content="Página não encontrada.">
+<meta property="og:image" content="assets/img/hero/fallback.webp">
 <meta property="og:locale" content="pt_BR">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <script>
@@ -18,20 +19,20 @@
     d.classList.add('js');
     var t = null;
     try { t = localStorage.getItem('gs-theme'); } catch (e) {}
-    d.dataset.theme = t || 'dark';
+    d.dataset.theme = t === 'dark' ? 'dark' : 'light';
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-<div class="backdrop" aria-hidden="true"><span class="blob blob--a"></span><span class="blob blob--b"></span></div>
-<main class="wrap" style="min-height:100dvh;display:grid;place-content:center;gap:22px;text-align:center">
-  <p class="label" style="justify-content:center">Erro 404</p>
-  <h1 style="font-family:var(--font-head);font-size:clamp(64px,16vw,180px);font-weight:600;letter-spacing:-.06em;line-height:.9">Ops.</h1>
-  <p style="color:var(--muted)">Essa página não existe — mas o portfólio sim.</p>
+<div class="backdrop" aria-hidden="true"><i></i><i></i><i></i></div>
+<main class="wrap" style="min-height:100dvh;display:grid;place-content:center;gap:18px;text-align:center">
+  <p class="kicker">Erro 404</p>
+  <h1 style="font-size:clamp(64px,16vw,160px);font-weight:800;letter-spacing:-.06em;line-height:.9" class="gold-text">Ops.</h1>
+  <p class="muted">Essa página não existe — mas o portfólio sim.</p>
   <p><a class="btn" href="index.html">Voltar ao início <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
 </main>
 </body>
